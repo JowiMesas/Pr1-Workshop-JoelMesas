@@ -1,0 +1,19 @@
+{
+    "name": "joelmesashontoria/pr1-workshop-joel-mesas",
+    "autoload": {
+        "psr-4": {
+            "Joelmesashontoria\\Pr1WorkshopJoelMesas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jowi",
+            "email": "joelmesash@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.8",
+        "intervention/image": "^3.9",
+        "ramsey/uuid": "^4.7"
+    }
+}
