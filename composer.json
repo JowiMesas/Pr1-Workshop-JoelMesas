@@ -2,7 +2,7 @@
     "name": "joelmesashontoria/pr1-workshop-joel-mesas",
     "autoload": {
         "psr-4": {
-            "Joelmesashontoria\\Pr1WorkshopJoelMesas\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
