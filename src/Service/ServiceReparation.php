@@ -1,6 +1,6 @@
 <?php
 
-
+namespace App\Service;
 class ServiceReparation {
     function connect() {
 
@@ -8,7 +8,7 @@ class ServiceReparation {
     function insertReparation() {
 
     }
-    function getReparation() {
+    function getReparation($idReparation) {
         
     }
 }
