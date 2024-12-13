@@ -15,7 +15,7 @@ namespace App\View;
         Reparation ID:
         <input type="text" name="idReparation">
     </label> 
-    <input type="submit" value="Send" >   
+    <input type="submit"  name="getReparation" >   
     </form>
     <?php
         $role = $_GET["role"];
@@ -24,6 +24,8 @@ namespace App\View;
         <h2>Insert reparation</h2>
         <form action="../Controller/ControllerReparation.php">
             <label for=""></label>
+
+            <input type="submit"  name="insertReparation">
         </form>
         <?php 
         }

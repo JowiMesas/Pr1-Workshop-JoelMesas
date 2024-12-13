@@ -4,7 +4,12 @@ namespace App\Controller;
 use App\Service\ServiceReparation;
 
 $controller = new ControllerReparation;
-$controller->getReparation();
+if(isset($_POST['getReparation'])) {
+    $controller->getReparation();
+}
+if(isset($_POST['insertReparation'])) {
+    $controller->insertReparation();
+}
 
 class ControllerReparation {
     function insertReparation() {
