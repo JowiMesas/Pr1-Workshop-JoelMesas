@@ -21,7 +21,6 @@ class ControllerReparation {
 
     }
     function getReparation() {
-        session_start();
         $idReparation = $_POST['idReparation'];
         $role = $_SESSION["role"];
         $service = new ServiceReparation;
