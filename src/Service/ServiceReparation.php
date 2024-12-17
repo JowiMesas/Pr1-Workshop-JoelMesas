@@ -15,7 +15,7 @@ class ServiceReparation {
     function insertReparation() {
 
     }
-    function getReparation($idReparation) {
+    function getReparation($idReparation,$role) {
         $conn = $this->connect();
         $query = "SELECT * FROM workshop.reparation WHERE idReparation = ?";
         $stmt = $conn->prepare($query);
