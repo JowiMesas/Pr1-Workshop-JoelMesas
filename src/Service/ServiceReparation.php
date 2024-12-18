@@ -12,8 +12,9 @@ class ServiceReparation {
         }
         return $mysqli;
     }
-    function insertReparation() {
-
+    function insertReparation(Reparation $reparation) {
+        $conn = $this->connect();
+        $query = "INSERT INTO workshop.reparation (idReparation, idWorkshop, nameWorkshop, registerDate, licenseVehicle) VALUES (?, ?, ?, ?, ?);";
     }
     function getReparation($idReparation,$role) {
         $conn = $this->connect();

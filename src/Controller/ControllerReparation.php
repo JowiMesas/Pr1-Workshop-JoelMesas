@@ -18,7 +18,25 @@ if (isset($_POST['insertReparation'])) {
 
 class ControllerReparation {
     function insertReparation() {
+        if($_SESSION["role"] = "employee") {
+            if (isset($_POST['idReparation']) && isset($_POST['idWorkshop']) && isset($_POST['nameWorkshop']) && isset($_POST['dateRegister']) &&isset($_POST['licenseVehicle']) ) {
+                $idReparation = $_POST['idReparation'];
+                $idWorkshop = $_POST['idWorkshop'];
+                $nameWorkshop = $_POST['nameWorkshop'];
+                $registerDate = $_POST['registerDate'];
+                $licenseVehicle = $_POST['licenseVehicle'];
+                
+                $reparation = new Reparation($idReparation, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle);
 
+
+                $service = new ServiceReparation();
+                $service->insertReparation($reparation);
+                echo "Reparation inserted successfully!";
+
+            } else {
+                echo "All fields are required.";
+            }
+        }
     }
     function getReparation() {
         $idReparation = $_POST['idReparation'];

@@ -35,6 +35,9 @@ public function getRegisterDate() {
 public function getLicenseVehicle() {
     return $this->licenseVehicle;
 }
+public function setIdReparation($idReparation) {
+    $this->idReparation = $idReparation;
+}
 public function setIdWorkshop($idWorkshop) {
     $this->idWorkshop = $idWorkshop;
 }
