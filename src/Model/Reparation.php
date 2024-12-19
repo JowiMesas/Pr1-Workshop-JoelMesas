@@ -35,22 +35,5 @@ public function getRegisterDate() {
 public function getLicenseVehicle() {
     return $this->licenseVehicle;
 }
-public function setIdReparation($idReparation) {
-    $this->idReparation = $idReparation;
-}
-public function setIdWorkshop($idWorkshop) {
-    $this->idWorkshop = $idWorkshop;
-}
 
-public function setNameWorkshop($nameWorkshop) {
-    $this->nameWorkshop = $nameWorkshop;
-}
-
-public function setRegisterDate($registerDate) {
-    $this->registerDate = $registerDate;
-}
-
-public function setLicenseVehicle($licenseVehicle) {
-    $this->licenseVehicle = $licenseVehicle;
-}
 }

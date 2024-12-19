@@ -43,7 +43,7 @@ use App\Model\Reparation;
     ?>
     <?php
         session_start();
-        $_SESSION["role"] = $_GET["role"];
+        $_SESSION["role"] = $_GET["role"] ?? $_SESSION["role"] ?? null;
         if($_SESSION["role"] == "employee") {
         ?> 
         <h2>Insert reparation</h2>
@@ -55,7 +55,7 @@ use App\Model\Reparation;
             <br> <br>
             <label for="idWorkshop">
                 ID Workshop:
-                <input type="number" name="idWorkshop" max="4" placeholder="Introduce ID workshop" required>
+                <input type="number" name="idWorkshop"  placeholder="Introduce ID workshop" required>
             </label>
             <br>
             <br>
@@ -68,6 +68,12 @@ use App\Model\Reparation;
             <label for="dateRegister">
                 Register Date:
                 <input type="date" name="dateRegister" placeholder="Date of Register" >
+            </label>
+            <br>
+            <br>
+            <label for="licenseVehicle">
+                License Plate:
+                <input type="text" name="licenseVehicle" max="7" required >
             </label>
             <input type="submit"  name="insertReparation">
         </form>

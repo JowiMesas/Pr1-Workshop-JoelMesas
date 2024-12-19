@@ -23,15 +23,21 @@ class ControllerReparation {
                 $idReparation = $_POST['idReparation'];
                 $idWorkshop = $_POST['idWorkshop'];
                 $nameWorkshop = $_POST['nameWorkshop'];
-                $registerDate = $_POST['registerDate'];
+                $registerDate = $_POST['dateRegister'];
                 $licenseVehicle = $_POST['licenseVehicle'];
                 
                 $reparation = new Reparation($idReparation, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle);
 
 
                 $service = new ServiceReparation();
-                $service->insertReparation($reparation);
+                $reparationInserted = $service->insertReparation($reparation);
+                if($reparationInserted) {
                 echo "Reparation inserted successfully!";
+                $view = new ViewReparation();
+                $view->render($reparationInserted);
+                } else {
+                    echo "Failed to insert reparation";
+                }
 
             } else {
                 echo "All fields are required.";

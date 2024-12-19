@@ -15,6 +15,28 @@ class ServiceReparation {
     function insertReparation(Reparation $reparation) {
         $conn = $this->connect();
         $query = "INSERT INTO workshop.reparation (idReparation, idWorkshop, nameWorkshop, registerDate, licenseVehicle) VALUES (?, ?, ?, ?, ?);";
+        $stmt = $conn->prepare($query);
+        if (!$stmt) {
+            echo "Error preparing statement: " . $conn->error;
+            return;
+        }
+        $idReparation = $reparation->getIdReparation();
+        $idWorkshop = $reparation->getIdWorkshop();
+        $nameWorkshop = $reparation->getNameWorkshop();
+        $registerDate = $reparation->getRegisterDate();
+        $licenseVehicle = $reparation->getLicenseVehicle();
+         $stmt->bind_param("sisss", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle);
+         if ($stmt->execute()) {
+            $stmt->close();
+            $conn->close();
+            return $reparation;
+        } else {
+            $stmt->close();
+            $conn->close();
+            return null;
+        }
+    
+
     }
     function getReparation($idReparation,$role) {
         $conn = $this->connect();
