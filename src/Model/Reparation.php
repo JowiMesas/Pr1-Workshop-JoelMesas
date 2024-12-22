@@ -6,13 +6,15 @@ class Reparation {
   private $nameWorkshop;
   private $registerDate;
   private $licenseVehicle;
+  private $photoVehicle;
 
-  public function __construct($idReparation, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle) {
+  public function __construct($idReparation, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle,$photoVehicle) {
       $this->idReparation = $idReparation;
       $this->idWorkshop = $idWorkshop;
       $this->nameWorkshop = $nameWorkshop;
       $this->registerDate = $registerDate;
       $this->licenseVehicle = $licenseVehicle;
+      $this->photoVehicle = $photoVehicle;
   }   
 
 
@@ -35,5 +37,8 @@ public function getRegisterDate() {
 public function getLicenseVehicle() {
     return $this->licenseVehicle;
 }
-
+  public function getPhotoVehicle()
+  {
+    return $this->photoVehicle;
+  }
 }

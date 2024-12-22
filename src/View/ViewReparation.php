@@ -33,6 +33,11 @@ use App\Model\Reparation;
                 echo "<li><strong>Register Date:</strong> " . $result->getRegisterDate() . "</li>";
                 echo "<li><strong>License Plate:</strong> " . $result->getLicenseVehicle() . "</li>";
                 echo "</ul>";
+                if($_SESSION['role'] == 'client') {
+                    echo '<img src="data:image/png;base64,' . base64_encode($result->getPhotoVehicle()) . '" alt="Vehicle Image" style="max-width:200px; filter: blur(10px);">';
+                } else {
+                    echo '<img src="data:image/png;base64,' . base64_encode($result->getPhotoVehicle()) . '" alt="Vehicle Image" style="max-width:200px;">';
+                }
             } else {
                 echo "No reparation found.";
             }
@@ -74,6 +79,12 @@ use App\Model\Reparation;
             <label for="licenseVehicle">
                 License Plate:
                 <input type="text" name="licenseVehicle" max="7" required >
+            </label>
+            <br>
+            <br>
+            <label for="photoVehicle">
+                Vehicle Image:
+                <input type="file" name="photoVehicle" accept="image/*" required>
             </label>
             <input type="submit"  name="insertReparation">
         </form>

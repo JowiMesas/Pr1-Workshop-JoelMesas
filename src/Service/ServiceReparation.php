@@ -25,7 +25,8 @@ class ServiceReparation {
         $nameWorkshop = $reparation->getNameWorkshop();
         $registerDate = $reparation->getRegisterDate();
         $licenseVehicle = $reparation->getLicenseVehicle();
-         $stmt->bind_param("sisss", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle);
+         $stmt->bind_param("sisss", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $null);
+         $stmt->send_long_data(5, $reparation->getPhotoVehicle());
          if ($stmt->execute()) {
             $stmt->close();
             $conn->close();
@@ -42,7 +43,7 @@ class ServiceReparation {
         $conn = $this->connect();
         $query = "SELECT * FROM workshop.reparation WHERE idReparation = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $idReparation);
+        $stmt->bind_param("s", $idReparation);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -53,7 +54,8 @@ class ServiceReparation {
                 $row['idWorkshop'],
                 $row['nameWorkshop'],
                 $row['registerDate'],
-                $row['licenseVehicle']
+                $row['licenseVehicle'],
+                $row['photoVehicle']
             );
             $stmt->close();
             $conn->close();
