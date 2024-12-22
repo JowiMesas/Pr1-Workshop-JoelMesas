@@ -52,7 +52,7 @@ use App\Model\Reparation;
         if($_SESSION["role"] == "employee") {
         ?> 
         <h2>Insert reparation</h2>
-        <form action="../Controller/ControllerReparation.php" method="post" >
+        <form action="../Controller/ControllerReparation.php" method="post" enctype="multipart/form-data">
             <label for="idReparation">
                 ID Reparation:
                 <input type="text" name="idReparation" max="20" placeholder="Introduce ID Reparation" required>

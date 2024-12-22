@@ -14,7 +14,7 @@ class ServiceReparation {
     }
     function insertReparation(Reparation $reparation) {
         $conn = $this->connect();
-        $query = "INSERT INTO workshop.reparation (idReparation, idWorkshop, nameWorkshop, registerDate, licenseVehicle) VALUES (?, ?, ?, ?, ?);";
+        $query = "INSERT INTO workshop.reparation (idReparation, idWorkshop, nameWorkshop, registerDate, licenseVehicle, photoVehicle) VALUES (?, ?, ?, ?, ?, ?);";
         $stmt = $conn->prepare($query);
         if (!$stmt) {
             echo "Error preparing statement: " . $conn->error;
@@ -25,7 +25,7 @@ class ServiceReparation {
         $nameWorkshop = $reparation->getNameWorkshop();
         $registerDate = $reparation->getRegisterDate();
         $licenseVehicle = $reparation->getLicenseVehicle();
-         $stmt->bind_param("sisss", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $null);
+         $stmt->bind_param("sisssb", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $null);
          $stmt->send_long_data(5, $reparation->getPhotoVehicle());
          if ($stmt->execute()) {
             $stmt->close();
