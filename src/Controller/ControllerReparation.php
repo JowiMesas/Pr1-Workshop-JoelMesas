@@ -34,7 +34,6 @@ class ControllerReparation {
                 $service = new ServiceReparation();
                 $reparationInserted = $service->insertReparation($reparation);
                 if($reparationInserted) {
-                echo "Reparation inserted successfully!";
                 $view = new ViewReparation();
                 $view->render($reparationInserted);
                 } else {
