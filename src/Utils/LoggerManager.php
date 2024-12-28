@@ -1,8 +1,9 @@
 <?php
 namespace App\Utils;
-
+require_once __DIR__ . '../../../vendor/autoload.php';
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 
 class LoggerManager {
     private static $logger;
@@ -17,7 +18,7 @@ class LoggerManager {
                 mkdir(dirname($logFile), 0777, true);
             }
 
-            $handler = new StreamHandler($logFile, Logger::DEBUG); // Nivel mínimo: DEBUG
+            $handler = new StreamHandler($logFile, Level::Debug); // Nivel mínimo: DEBUG
             self::$logger->pushHandler($handler);
         }
 
