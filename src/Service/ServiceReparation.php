@@ -2,8 +2,11 @@
 
 namespace App\Service;
 use App\Model\Reparation;
-use App\Utils\LoggerManager;
 use mysqli;
+// require_once __DIR__ . '/../Utils/LoggerManager.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
+use App\Utils\LoggerManager;
+
 class ServiceReparation {
     function connect() {
         $logger = LoggerManager::getLogger();
