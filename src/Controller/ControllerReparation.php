@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Service\ServiceReparation;
 use App\Model\Reparation;
 use App\View\ViewReparation;
+use Intervention\Image\ImageManager;
 require_once __DIR__ . '/../Service/ServiceReparation.php';
 require_once __DIR__ . '/../Model/Reparation.php';
 require_once __DIR__ . '/../View/ViewReparation.php';
@@ -50,6 +51,15 @@ class ControllerReparation {
         $role = $_SESSION["role"];
         $service = new ServiceReparation;
         $result = $service->getReparation($idReparation,$role);
+        // if($result && $result->getPhotoVehicle()) {
+        //     $photo = $result->getPhotoVehicle();
+
+        //     if($role === 'client') {
+        //         $imagePixelada = new ImageManager('gd');
+        //         $image = $imagePixelada->gd($photo);
+        //         $image->pixelate(20);
+        //     }
+        // }
         $view = new ViewReparation();
         $view->render($result);
     }
