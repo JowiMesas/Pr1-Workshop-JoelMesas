@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller;
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 use App\Service\ServiceReparation;
 use App\Model\Reparation;
@@ -51,21 +52,18 @@ class ControllerReparation {
         $role = $_SESSION["role"];
         $service = new ServiceReparation;
         $result = $service->getReparation($idReparation,$role);
-        if ($result && $result->getPhotoVehicle()) {
-            $photo = $result->getPhotoVehicle();
+        // if ($result && $result->getPhotoVehicle()) {
+        //     $photo = $result->getPhotoVehicle();
     
-            if ($role === 'client') {
-                // Inicializar el ImageManager con el driver 'gd' o 'imagick'
-                $imageManager = new ImageManager(['driver' => 'gd']); // O ['driver' => 'imagick']
+        //     if ($role === 'client') {
+        //         $imageManager = new ImageManager('gd'); 
     
-                // Crear una instancia de la imagen y aplicar el filtro de pixelado
-                $image = $imageManager->make($photo);
-                $image->blur(15); // Aplica un desenfoque
+        //         $image = $imageManager->read($photo);
+        //         $image->pixelate(15); 
     
-                // Guardar la imagen como string codificada en base64 para mostrarla
-                $photo = (string) $image->encode('data-url'); // Codifica como Data URL
-            }
-        }
+        //         $photo = (string) $image->encode('data-url'); 
+        //     }
+        // }
         $view = new ViewReparation();
         $view->render($result);
     }
