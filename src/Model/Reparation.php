@@ -41,4 +41,10 @@ public function getLicenseVehicle() {
   {
     return $this->photoVehicle;
   }
+  public function setPhotoVehicle($photoVehicle)
+  {
+    $this->photoVehicle = $photoVehicle;
+
+    return $this;
+  }
 }

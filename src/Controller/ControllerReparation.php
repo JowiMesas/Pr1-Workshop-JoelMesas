@@ -59,11 +59,22 @@ class ControllerReparation {
         //         $imageManager = new ImageManager('gd'); 
     
         //         $image = $imageManager->read($photo);
-        //         $image->pixelate(15); 
-    
-        //         $photo = (string) $image->encode('data-url'); 
-        //     }
+        //         $image->pixelate(15);
+
+        //         // Usar un encoder explícito para JPEG
+        //         $encoder = new \Intervention\Image\Encoders\JpegEncoder();
+
+        //         // Codificar a Base64
+        //         $codeImage = base64_encode($encoder->encode($image));
+
+        //         // Preparar el formato Data URI
+        //         $photo = 'data:image/jpeg;base64,' . $codeImage;
+
         // }
+
+        // // Reasignar la foto procesada al resultado
+        // $result->setPhotoVehicle($photo);
+            // }
         $view = new ViewReparation();
         $view->render($result);
     }
