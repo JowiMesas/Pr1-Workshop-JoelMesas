@@ -95,12 +95,16 @@ class ServiceReparation {
     }
     function pixelateImage($imageVehicle) {
         if (!$imageVehicle) {
-            return null; // Retorna null si no hay imagen
+            return null;
         }
+    
         $imagePixelate = new ImageManager(new Driver());
-        $newImage = $imagePixelate->read($imageVehicle, Base64ImageDecoder::class);
-        $newImage->pixelate(30);
+        // Since the data is coming from LONGBLOB, we first need to encode it to base64
+        $base64Image = base64_encode(string: $imageVehicle);
 
+        $newImage = $imagePixelate->read($base64Image, Base64ImageDecoder::class);
+        $newImage->pixelate(30);
+    
         return base64_encode($newImage->encode());
     }
 }

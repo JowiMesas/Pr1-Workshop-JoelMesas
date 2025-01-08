@@ -1,5 +1,1 @@
-[2025-01-08T15:54:19.685327+01:00] app_workshop.INFO: INSERT operation successful for ID: Prueba4 [] []
-[2025-01-08T15:55:25.890014+01:00] app_workshop.INFO: SELECT operation successful for ID: Prueba4 [] []
-[2025-01-08T16:10:26.887869+01:00] app_workshop.WARNING: No results found for ID:  [] []
-[2025-01-08T16:10:27.456184+01:00] app_workshop.WARNING: No results found for ID:  [] []
-[2025-01-08T16:10:28.400758+01:00] app_workshop.WARNING: No results found for ID:  [] []
+
