@@ -52,29 +52,6 @@ class ControllerReparation {
         $role = $_SESSION["role"];
         $service = new ServiceReparation;
         $result = $service->getReparation($idReparation,$role);
-        // if ($result && $result->getPhotoVehicle()) {
-        //     $photo = $result->getPhotoVehicle();
-    
-        //     if ($role === 'client') {
-        //         $imageManager = new ImageManager('gd'); 
-    
-        //         $image = $imageManager->read($photo);
-        //         $image->pixelate(15);
-
-        //         // Usar un encoder explícito para JPEG
-        //         $encoder = new \Intervention\Image\Encoders\JpegEncoder();
-
-        //         // Codificar a Base64
-        //         $codeImage = base64_encode($encoder->encode($image));
-
-        //         // Preparar el formato Data URI
-        //         $photo = 'data:image/jpeg;base64,' . $codeImage;
-
-        // }
-
-        // // Reasignar la foto procesada al resultado
-        // $result->setPhotoVehicle($photo);
-            // }
         $view = new ViewReparation();
         $view->render($result);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Service;
 use App\Model\Reparation;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 use mysqli;
 // require_once __DIR__ . '/../Utils/LoggerManager.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -85,4 +87,7 @@ class ServiceReparation {
         }
 
     }
+    // function pixelateImage() {
+    //     $imagePixelate = new ImageManager(new Driver());
+    // }
 }
