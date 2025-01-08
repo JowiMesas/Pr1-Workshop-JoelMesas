@@ -21,7 +21,12 @@ class Reparation {
 public function getIdReparation() {
     return $this->idReparation;
 }
+public function setIdReparation($idReparation)
+{
+  $this->idReparation = $idReparation;
 
+  return $this;
+}
 public function getIdWorkshop() {
     return $this->idWorkshop;
 }
@@ -47,4 +52,6 @@ public function getLicenseVehicle() {
 
     return $this;
   }
+
+
 }

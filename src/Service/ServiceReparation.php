@@ -38,10 +38,11 @@ class ServiceReparation {
         $registerDate = $reparation->getRegisterDate();
         $licenseVehicle = $reparation->getLicenseVehicle();
         $photoVehicle = $reparation->getPhotoVehicle();
-
          $stmt->bind_param("sisssb", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $null);
          $stmt->send_long_data(5, $photoVehicle);
          if ($stmt->execute()) {
+            $reparation->setIdReparation($idReparation);
+            $photoVehicle = base64_encode($photoVehicle);
             $logger->info("INSERT operation successful for ID: " . $reparation->getIdReparation());
             $stmt->close();
             $conn->close();
