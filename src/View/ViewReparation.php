@@ -54,11 +54,6 @@ use App\Model\Reparation;
         ?> 
         <h2>Insert reparation</h2>
         <form action="../Controller/ControllerReparation.php" method="post" enctype="multipart/form-data">
-            <label for="idReparation">
-                ID Reparation:
-                <input type="text" name="idReparation" max="40" placeholder="Introduce ID Reparation" required>
-            </label>
-            <br> <br>
             <label for="idWorkshop">
                 ID Workshop:
                 <input type="number" name="idWorkshop"  placeholder="Introduce ID workshop" required>

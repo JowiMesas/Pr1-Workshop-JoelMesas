@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Service;
+require_once __DIR__ . '/../../vendor/autoload.php';
+
 use App\Model\Reparation;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use mysqli;
+use Ramsey\Uuid\Nonstandard\Uuid;
 // require_once __DIR__ . '/../Utils/LoggerManager.php';
-require_once __DIR__ . '/../../vendor/autoload.php';
 use App\Utils\LoggerManager;
 use Intervention\Image\Decoders\Base64ImageDecoder;
 
@@ -30,7 +32,7 @@ class ServiceReparation {
             echo "Failed to prepare SQL statement: " . $conn->error;
             return false;
         }
-        $idReparation = $reparation->getIdReparation();
+        $idReparation = $this->generateUUID();
         $idWorkshop = $reparation->getIdWorkshop();
         $nameWorkshop = $reparation->getNameWorkshop();
         $registerDate = $reparation->getRegisterDate();
@@ -111,5 +113,8 @@ class ServiceReparation {
         $newImage->pixelate(20);
     
         return base64_encode($newImage->encode());
+    }
+    function generateUUID() {
+        return Uuid::uuid4();
     }
 }

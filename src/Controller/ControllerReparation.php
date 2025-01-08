@@ -21,16 +21,15 @@ if (isset($_POST['insertReparation'])) {
 class ControllerReparation {
     function insertReparation() {
         if($_SESSION["role"] = "employee") {
-            if (isset($_POST['idReparation']) && isset($_POST['idWorkshop']) && isset($_POST['nameWorkshop']) && isset($_POST['dateRegister'])
+            if (isset($_POST['idWorkshop']) && isset($_POST['nameWorkshop']) && isset($_POST['dateRegister'])
              &&isset($_POST['licenseVehicle']) && isset($_FILES['photoVehicle']) ) {
-                $idReparation = $_POST['idReparation'];
                 $idWorkshop = $_POST['idWorkshop'];
                 $nameWorkshop = $_POST['nameWorkshop'];
                 $registerDate = $_POST['dateRegister'];
                 $licenseVehicle = $_POST['licenseVehicle'];
                 $photoVehicle = file_get_contents($_FILES['photoVehicle']['tmp_name']);
                 
-                $reparation = new Reparation($idReparation, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle, $photoVehicle);
+                $reparation = new Reparation(null, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle, $photoVehicle);
 
 
                 $service = new ServiceReparation();
