@@ -42,6 +42,12 @@ public function getRegisterDate() {
 public function getLicenseVehicle() {
     return $this->licenseVehicle;
 }
+public function setLicenseVehicle($licenseVehicle)
+{
+  $this->licenseVehicle = $licenseVehicle;
+
+  return $this;
+}
   public function getPhotoVehicle()
   {
     return $this->photoVehicle;
@@ -52,6 +58,9 @@ public function getLicenseVehicle() {
 
     return $this;
   }
+
+
+
 
 
 }
