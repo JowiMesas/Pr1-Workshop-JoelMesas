@@ -35,8 +35,10 @@ class ServiceReparation {
         $nameWorkshop = $reparation->getNameWorkshop();
         $registerDate = $reparation->getRegisterDate();
         $licenseVehicle = $reparation->getLicenseVehicle();
+        $photoVehicle = $reparation->getPhotoVehicle();
+
          $stmt->bind_param("sisssb", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $null);
-         $stmt->send_long_data(5, $reparation->getPhotoVehicle());
+         $stmt->send_long_data(5, $photoVehicle);
          if ($stmt->execute()) {
             $logger->info("INSERT operation successful for ID: " . $reparation->getIdReparation());
             $stmt->close();
@@ -72,6 +74,9 @@ class ServiceReparation {
             if ($role === 'client' && $photoVehicle !== null) {
                 $photoVehicle = $this->pixelateImage($photoVehicle);
             }
+            if ($role === 'employee' && $photoVehicle !== null) {
+                $photoVehicle = base64_encode($photoVehicle);
+            }
             $reparation = new Reparation(
                 $row['idReparation'],
                 $row['idWorkshop'],
@@ -103,7 +108,7 @@ class ServiceReparation {
         $base64Image = base64_encode(string: $imageVehicle);
 
         $newImage = $imagePixelate->read($base64Image, Base64ImageDecoder::class);
-        $newImage->pixelate(30);
+        $newImage->pixelate(20);
     
         return base64_encode($newImage->encode());
     }

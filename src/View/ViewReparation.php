@@ -33,7 +33,11 @@ use App\Model\Reparation;
                 echo "<li><strong>Register Date:</strong> " . $result->getRegisterDate() . "</li>";
                 echo "<li><strong>License Plate:</strong> " . $result->getLicenseVehicle() . "</li>";
                 echo "</ul>";
-                echo '<img src="data:image/png;base64,' . base64_encode($result->getPhotoVehicle()) . '" alt="Vehicle Image" style="max-width:200px;">';
+                if ($result->getPhotoVehicle()) {
+                    echo '<img src="data:image/png;base64,' . $result->getPhotoVehicle() . '" alt="Vehicle Image" style="max-width:200px;">';
+                } else {
+                    echo "<p>No image available</p>";
+                }
 
             } else {
                 echo "No reparation found.";
@@ -52,7 +56,7 @@ use App\Model\Reparation;
         <form action="../Controller/ControllerReparation.php" method="post" enctype="multipart/form-data">
             <label for="idReparation">
                 ID Reparation:
-                <input type="text" name="idReparation" max="20" placeholder="Introduce ID Reparation" required>
+                <input type="text" name="idReparation" max="40" placeholder="Introduce ID Reparation" required>
             </label>
             <br> <br>
             <label for="idWorkshop">
