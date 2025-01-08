@@ -33,11 +33,8 @@ use App\Model\Reparation;
                 echo "<li><strong>Register Date:</strong> " . $result->getRegisterDate() . "</li>";
                 echo "<li><strong>License Plate:</strong> " . $result->getLicenseVehicle() . "</li>";
                 echo "</ul>";
-                if($_SESSION['role'] == 'client') {
-                    echo '<img src="data:image/png;base64,' . base64_encode($result->getPhotoVehicle()) . '" alt="Vehicle Image" style="max-width:200px; filter: blur(10px);">';
-                } else {
-                    echo '<img src="data:image/png;base64,' . base64_encode($result->getPhotoVehicle()) . '" alt="Vehicle Image" style="max-width:200px;">';
-                }
+                echo '<img src="data:image/png;base64,' . base64_encode($result->getPhotoVehicle()) . '" alt="Vehicle Image" style="max-width:200px;">';
+
             } else {
                 echo "No reparation found.";
             }

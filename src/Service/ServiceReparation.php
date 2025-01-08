@@ -8,6 +8,7 @@ use mysqli;
 // require_once __DIR__ . '/../Utils/LoggerManager.php';
 require_once __DIR__ . '/../../vendor/autoload.php';
 use App\Utils\LoggerManager;
+use Intervention\Image\Decoders\Base64ImageDecoder;
 
 class ServiceReparation {
     function connect() {
@@ -67,13 +68,18 @@ class ServiceReparation {
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
+            $photoVehicle = $row['photoVehicle'];
+            if ($role === 'client' && $photoVehicle !== null) {
+                $photoVehicle = $this->pixelateImage($photoVehicle);
+            }
             $reparation = new Reparation(
                 $row['idReparation'],
                 $row['idWorkshop'],
                 $row['nameWorkshop'],
                 $row['registerDate'],
                 $row['licenseVehicle'],
-                $row['photoVehicle']
+                $photoVehicle
+               
             );
             $logger->info("SELECT operation successful for ID: $idReparation");
             $stmt->close();
@@ -87,7 +93,14 @@ class ServiceReparation {
         }
 
     }
-    // function pixelateImage() {
-    //     $imagePixelate = new ImageManager(new Driver());
-    // }
+    function pixelateImage($imageVehicle) {
+        if (!$imageVehicle) {
+            return null; // Retorna null si no hay imagen
+        }
+        $imagePixelate = new ImageManager(new Driver());
+        $newImage = $imagePixelate->read($imageVehicle, Base64ImageDecoder::class);
+        $newImage->pixelate(30);
+
+        return base64_encode($newImage->encode());
+    }
 }
