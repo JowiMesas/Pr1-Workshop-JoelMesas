@@ -81,10 +81,6 @@ class ServiceReparation {
             if ($role === 'client' && $licenseVehicle !== null) {
                 $licenseVehicle = str_repeat('*', strlen($licenseVehicle));
             }
-
-            if ($role === 'employee' && $photoVehicle !== null) {
-                $photoVehicle = base64_encode($photoVehicle);
-            }
             $reparation = new Reparation(
                 $row['idReparation'],
                 $row['idWorkshop'],
@@ -113,9 +109,8 @@ class ServiceReparation {
     
         $imagePixelate = new ImageManager(new Driver());
         // Since the data is coming from LONGBLOB, we first need to encode it to base64
-        $base64Image = base64_encode(string: $imageVehicle);
 
-        $newImage = $imagePixelate->read($base64Image, Base64ImageDecoder::class);
+        $newImage = $imagePixelate->read($imageVehicle, Base64ImageDecoder::class);
         $newImage->pixelate(20);
     
         return base64_encode($newImage->encode());

@@ -33,6 +33,7 @@ use App\Model\Reparation;
                 echo "<li><strong>Register Date:</strong> " . $result->getRegisterDate() . "</li>";
                 echo "<li><strong>License Plate:</strong> " . $result->getLicenseVehicle() . "</li>";
                 echo "</ul>";
+                
                 if ($result->getPhotoVehicle()) {
                     echo '<img src="data:image/png;base64,' . $result->getPhotoVehicle() . '" alt="Vehicle Image" style="max-width:200px;">';
                 } else {

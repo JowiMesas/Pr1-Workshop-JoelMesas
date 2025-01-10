@@ -27,7 +27,8 @@ class ControllerReparation {
                 $nameWorkshop = $_POST['nameWorkshop'];
                 $registerDate = $_POST['dateRegister'];
                 $licenseVehicle = $_POST['licenseVehicle'];
-                $photoVehicle = file_get_contents($_FILES['photoVehicle']['tmp_name']);
+                $imgPhoto = $_FILES['photoVehicle']['tmp_name'];
+                $photoVehicle = base64_encode(file_get_contents($imgPhoto));
                 
                 $reparation = new Reparation(null, $idWorkshop, $nameWorkshop, $registerDate, $licenseVehicle, $photoVehicle);
 
