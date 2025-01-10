@@ -11,6 +11,7 @@ use Ramsey\Uuid\Nonstandard\Uuid;
 // require_once __DIR__ . '/../Utils/LoggerManager.php';
 use App\Utils\LoggerManager;
 use Intervention\Image\Decoders\Base64ImageDecoder;
+use Intervention\Image\Typography\FontFactory;
 
 class ServiceReparation {
     function connect() {
@@ -38,8 +39,8 @@ class ServiceReparation {
         $registerDate = $reparation->getRegisterDate();
         $licenseVehicle = $reparation->getLicenseVehicle();
         $photoVehicle = $reparation->getPhotoVehicle();
-         $stmt->bind_param("sisssb", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $null);
-         $stmt->send_long_data(5, $photoVehicle);
+        $photovehicleWaterMark = $this->addWatermark($photoVehicle, $licenseVehicle, $idReparation);
+         $stmt->bind_param("sisssb", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $photovehicleWaterMark);
          if ($stmt->execute()) {
             $reparation->setIdReparation($idReparation);
             $photoVehicle = base64_encode($photoVehicle);
@@ -117,5 +118,18 @@ class ServiceReparation {
     }
     function generateUUID() {
         return Uuid::uuid4();
+    }
+    function addWatermark($photo, $licensePlate, $idReparation): string
+    {
+        $manager = new ImageManager(new Driver);
+        $imageWithWaterMark = $manager->read($photo, Base64ImageDecoder::class);
+ 
+        $imageWithWaterMark->text($licensePlate . ' - ' . $idReparation, 20, 50, function (FontFactory $font) {
+            $font->size(48);
+            $font->color('#FAE500');
+            $font->stroke('#000000', 9);
+        });
+ 
+        return base64_encode($imageWithWaterMark->encode());
     }
 }
