@@ -10,3 +10,7 @@
 [2025-01-08T19:49:12.440596+01:00] app_workshop.INFO: SELECT operation successful for ID: f1e1365d-87ed-430d-8880-42536ef76049 [] []
 [2025-01-08T19:49:22.336767+01:00] app_workshop.INFO: SELECT operation successful for ID: f1e1365d-87ed-430d-8880-42536ef76049 [] []
 [2025-01-08T19:55:55.237772+01:00] app_workshop.INFO: INSERT operation successful for ID: 7f908970-af6e-4c54-9171-1cc957004699 [] []
+[2025-01-10T18:03:58.860818+01:00] app_workshop.INFO: INSERT operation successful for ID: d8774f6f-3c64-4345-a817-3df02af96b83 [] []
+[2025-01-10T18:08:17.433868+01:00] app_workshop.INFO: INSERT operation successful for ID: 35ad8468-898f-4670-904a-1e76e6aef9e9 [] []
+[2025-01-10T18:08:54.858260+01:00] app_workshop.INFO: SELECT operation successful for ID: 35ad8468-898f-4670-904a-1e76e6aef9e9 [] []
+[2025-01-10T18:09:30.375360+01:00] app_workshop.INFO: SELECT operation successful for ID: 35ad8468-898f-4670-904a-1e76e6aef9e9 [] []

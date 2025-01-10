@@ -74,11 +74,14 @@ class ServiceReparation {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $photoVehicle = $row['photoVehicle'];
-            // $licensePlate = $row['licenseVehicle'];
+            $licenseVehicle = $row['licenseVehicle'];
             if ($role === 'client' && $photoVehicle !== null) {
                 $photoVehicle = $this->pixelateImage($photoVehicle);
-                // $licensePlate = $reparation->setLicenseVehicle('****-***');
             }
+            if ($role === 'client' && $licenseVehicle !== null) {
+                $licenseVehicle = str_repeat('*', strlen($licenseVehicle));
+            }
+
             if ($role === 'employee' && $photoVehicle !== null) {
                 $photoVehicle = base64_encode($photoVehicle);
             }
@@ -87,7 +90,7 @@ class ServiceReparation {
                 $row['idWorkshop'],
                 $row['nameWorkshop'],
                 $row['registerDate'],
-                $row['licenseVehicle'],
+                $licenseVehicle,
                 $photoVehicle
                
             );
