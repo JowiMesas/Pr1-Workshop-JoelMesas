@@ -40,7 +40,7 @@ class ServiceReparation {
         $licenseVehicle = $reparation->getLicenseVehicle();
         $photoVehicle = $reparation->getPhotoVehicle();
         $photovehicleWaterMark = $this->addWatermark($photoVehicle, $licenseVehicle, $idReparation);
-         $stmt->bind_param("sisssb", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $photovehicleWaterMark);
+         $stmt->bind_param("sissss", $idReparation,$idWorkshop,$nameWorkshop, $registerDate, $licenseVehicle, $photovehicleWaterMark);
          if ($stmt->execute()) {
             $reparation->setIdReparation($idReparation);
             $photoVehicle = base64_encode($photoVehicle);

@@ -175,12 +175,8 @@ form input[type="date"] {
                 echo "<li><strong>Register Date:</strong> " . $result->getRegisterDate() . "</li>";
                 echo "<li><strong>License Plate:</strong> " . $result->getLicenseVehicle() . "</li>";
                 echo "</ul>";
-    
-                if ($result->getPhotoVehicle()) {
-                    echo '<img src="data:image/png;base64,' . $result->getPhotoVehicle() . '" alt="Vehicle Image">';
-                } else {
-                    echo "<p>No image available</p>";
-                }
+                 echo '<img src="data:image/png;base64,' . $result->getPhotoVehicle() . '" alt="Vehicle Image">';
+
                 echo '</div>';
             } else {
                 echo "<p>No reparation found.</p>";
