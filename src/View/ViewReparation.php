@@ -200,7 +200,7 @@ form input[type="date"] {
             <br>
             <label for="nameWorkshop">
                 Workshop Name:
-                <input type="text" name="nameWorkshop" required>
+                <input type="text" name="nameWorkshop" placeholder="Introduce the name Workshop" required>
             </label>
             <br>
             <br>
@@ -212,7 +212,7 @@ form input[type="date"] {
             <br>
             <label for="licenseVehicle">
                 License Plate:
-                <input type="text" name="licenseVehicle" max="7" required >
+                <input type="text" name="licenseVehicle" max="7" placeholder="Introduce the License Plate" required >
             </label>
             <br>
             <br>
