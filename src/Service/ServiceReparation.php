@@ -126,7 +126,7 @@ class ServiceReparation {
  
         $imageWithWaterMark->text($licensePlate . ' - ' . $idReparation, 20, 50, function (FontFactory $font) {
             $font->size(48);
-            $font->color('#FAE500');
+            $font->color('#ff0000');
             $font->stroke('#000000', 9);
         });
  
